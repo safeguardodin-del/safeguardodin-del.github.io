@@ -285,7 +285,7 @@ body {
 /* Screenshots Section */
 .screenshots {
   padding: 5rem 0;
-  background-color: var(--bg-light);
+  background-color: var(--bg-alt);
 }
 
 .screenshots h2 {
@@ -297,10 +297,90 @@ body {
 .screenshots-intro {
   text-align: center;
   color: var(--text-muted);
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   font-size: 1.1rem;
 }
 
+/* Upload Manager */
+.upload-manager {
+  background-color: var(--bg-light);
+  border: 2px solid var(--border);
+  border-radius: 1rem;
+  padding: 2rem;
+  margin-bottom: 3rem;
+}
+
+.upload-manager h3 {
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+}
+
+.upload-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.upload-slot input {
+  display: none;
+}
+
+.upload-slot label {
+  cursor: pointer;
+}
+
+.upload-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-alt);
+  border: 2px dashed var(--primary);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s;
+  min-height: 120px;
+}
+
+.upload-placeholder:hover {
+  background-color: var(--primary);
+  color: white;
+  border-color: var(--primary-dark);
+}
+
+.upload-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.upload-text {
+  font-size: 0.85rem;
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.upload-info {
+  background-color: var(--bg-alt);
+  border-left: 4px solid var(--secondary);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+.upload-info ol {
+  margin-left: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.upload-info li {
+  margin-bottom: 0.5rem;
+}
+
+/* Screenshots Grid */
 .screenshots-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -310,12 +390,11 @@ body {
 
 .screenshot-card {
   position: relative;
-  background-color: var(--bg-alt);
+  background-color: var(--bg-light);
   border-radius: 0.75rem;
   border: 1px solid var(--border);
   overflow: hidden;
   transition: all 0.3s;
-  cursor: pointer;
   display: flex;
   flex-direction: column;
   box-shadow: var(--shadow);
@@ -333,15 +412,20 @@ body {
   object-fit: cover;
   background-color: #e0e7ff;
   transition: opacity 0.3s;
+  cursor: pointer;
 }
 
 .screenshot-card:hover img {
   opacity: 0.8;
 }
 
+.screenshot-card.empty img {
+  display: none;
+}
+
 .screenshot-label {
   padding: 1rem;
-  background-color: var(--bg-light);
+  background-color: var(--bg-alt);
   border-top: 1px solid var(--border);
   font-weight: 600;
   color: var(--primary);
@@ -378,13 +462,6 @@ body {
 .lightbox-btn:hover {
   background-color: var(--primary-dark);
   transform: translate(-50%, -50%) scale(1.1);
-}
-
-.screenshots-note {
-  text-align: center;
-  color: var(--text-muted);
-  font-size: 0.95rem;
-  margin-top: 2rem;
 }
 
 /* Lightbox Modal */
@@ -448,6 +525,21 @@ body {
   transform: scale(1.1);
 }
 
+/* Edit Mode Button */
+.edit-mode-toggle {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.edit-mode-toggle .btn {
+  background-color: var(--primary);
+  color: white;
+}
+
+.edit-mode-toggle .btn:hover {
+  background-color: var(--primary-dark);
+}
+
 /* Beta Section */
 .beta-section {
   padding: 5rem 0;
@@ -509,7 +601,7 @@ body {
 /* About Section */
 .about {
   padding: 5rem 0;
-  background-color: var(--bg-alt);
+  background-color: var(--bg-light);
 }
 
 .about h2 {
@@ -538,7 +630,7 @@ body {
 }
 
 .stat {
-  background-color: var(--bg-light);
+  background-color: var(--bg-alt);
   padding: 2rem;
   border-radius: 0.75rem;
   text-align: center;
@@ -562,7 +654,7 @@ body {
 /* Sources Section */
 .sources {
   padding: 5rem 0;
-  background-color: var(--bg-light);
+  background-color: var(--bg-alt);
 }
 
 .sources h2 {
@@ -585,7 +677,7 @@ body {
 }
 
 .source-card {
-  background-color: var(--bg-alt);
+  background-color: var(--bg-light);
   padding: 2rem;
   border-radius: 0.75rem;
   border: 1px solid var(--border);
@@ -675,6 +767,10 @@ body {
 
   .screenshots-grid {
     grid-template-columns: 1fr;
+  }
+
+  .upload-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .features h2,
