@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeGuard - Gratis Fraude Bescherming App</title>
+    <meta name="description" content="SafeGuard beschermt je tegen online fraude, phishing, romance scams en oplichting. Gratis fraude detectie app voor Nederland en Europa.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0e27;
+            color: #e0e0e0;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Neon gradients */
+        .neon-cyan {
+            color: #00f0ff;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+        }
+
+        .neon-lime {
+            color: #39ff14;
+            text-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
+        }
+
+        .neon-red {
+            color: #ff1744;
+            text-shadow: 0 0 10px rgba(255, 23, 68, 0.5);
+        }
+
+        .gradient-cyan-lime {
+            background: linear-gradient(135deg, #00f0ff, #39ff14);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00f0ff, #39ff14);
+            color: #0a0e27;
+            padding: 14px 32px;
+            border-radius: 10px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.6), 0 0 20px rgba(57, 255, 20, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #00f0ff;
+            padding: 14px 32px;
+            border: 2px solid #00f0ff;
+            border-radius: 10px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 240, 255, 0.1);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(15, 30, 60, 0.8), rgba(20, 40, 80, 0.8));
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            padding: 28px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-card:hover {
+            border-color: #00f0ff;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.2), inset 0 0 20px rgba(0, 240, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .feature-card.fraud-critical {
+            border: 1.5px solid #ff1744;
+        }
+
+        .feature-card.fraud-critical:hover {
+            border-color: #ff1744;
+            box-shadow: 0 0 20px rgba(255, 23, 68, 0.2), inset 0 0 20px rgba(255, 23, 68, 0.05);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-card {
+            background: rgba(20, 40, 80, 0.6);
+            border-left: 4px solid #00f0ff;
+            padding: 28px;
+            border-radius: 10px;
+        }
+
+        .nav-link {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            color: #00f0ff;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #00f0ff, #39ff14);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #a0a0a0;
+            margin-bottom: 32px;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #00f0ff, #39ff14);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: #0a0e27;
+            margin-bottom: 20px;
+        }
+
+        .hero-text {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-text {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .bg-gradient-dark {
+            background: linear-gradient(135deg, #0a0e27, #1a1f3a);
+        }
+
+        .alert-badge {
+            display: inline-block;
+            background: rgba(255, 23, 68, 0.2);
+            border: 1px solid #ff1744;
+            color: #ff6b6b;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .stats-box {
+            background: rgba(0, 240, 255, 0.05);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            padding: 24px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stats-number {
+            font-size: 2.2rem;
+            color: #00f0ff;
+            font-weight: 800;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-gradient-dark">
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 w-full bg-opacity-95 bg-gray-900 backdrop-blur-lg z-50 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-3">
+                    <span class="text-3xl">🛡️</span>
+                    <span class="text-2xl font-bold neon-cyan">SafeGuard</span>
+                </div>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#waarom" class="nav-link">Waarom SafeGuard</a>
+                    <a href="#wie" class="nav-link">Wie We Zijn</a>
+                    <a href="#features" class="nav-link">Bescherming</a>
+                    <a href="#hoe" class="nav-link">Hoe Het Werkt</a>
+                    <a href="#privacy" class="nav-link">Privacy</a>
+                    <button class="btn-primary text-sm">📥 Download Nu</button>
+                </div>
+                <div class="md:hidden">
+                    <button class="btn-primary text-sm">📥 Download</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="pt-36 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-dark">
+        <div class="max-w-5xl mx-auto text-center">
+            <div class="alert-badge">
+                ⚠️ Online fraude neemt explosief toe in Nederland en Europa
+            </div>
+            <div class="hero-text gradient-cyan-lime mb-6">
+                Bescherm jezelf tegen fraude, oplichting en phishing
+            </div>
+            <p class="text-xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed">
+                SafeGuard is de gratis app die jou en je familie beschermt tegen online oplichting, romance scams, beleggingsfraude, phishing en ID-diefstal. AI-aangedreven detectie. Volledig gratis. Geen spam, geen tracking.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <button class="btn-primary text-lg w-full sm:w-auto px-8 py-3">
+                    📱 Download SafeGuard Gratis
+                </button>
+                <button class="btn-secondary text-lg w-full sm:w-auto px-8 py-3">
+                    → Meer Info
+                </button>
+            </div>
+            <p class="text-gray-500 text-sm mt-8">
+                Beschikbaar voor iOS, Android en Web • 100% Open Source • Geen Verborgen Kosten
+            </p>
+        </div>
+    </section>
+
+    <!-- STATS SECTION -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-900 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="stats-box">
+                    <div class="stats-number">€15+ miljard</div>
+                    <p class="text-gray-400 mt-2">Jaarlijks oplichting in Nederland & België</p>
+                </div>
+                <div class="stats-box">
+                    <div class="stats-number">1 op 3</div>
+                    <p class="text-gray-400 mt-2">Nederlanders slachtoffer van online oplichting</p>
+                </div>
+                <div class="stats-box">
+                    <div class="stats-number">95%</div>
+                    <p class="text-gray-400 mt-2">Fraude kan voorkomen worden met goede bescherming</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WAAROM SAFEGUARD GEMAAKT? -->
+    <section id="waarom" class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-dark">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="section-title">Waarom SafeGuard bestaat</h2>
+            <p class="section-subtitle">Een persoonlijk verhaal over de realiteit van online oplichting</p>
+            
+            <div class="bg-gray-900 border border-gray-800 p-8 rounded-xl mb-8">
+                <p class="text-lg text-gray-300 mb-6 leading-relaxed">
+                    Online fraude is uit control. In de afgelopen 5 jaar zijn de aantallen verdubbeld. 
+                    <span class="neon-red">Miljarden euro's verdwijnen jaarlijks</span> naar criminele netwerken in Oost-Europa, Azië en Afrika.
+                </p>
+                <p class="text-lg text-gray-300 mb-6 leading-relaxed">
+                    Het erger is: <strong>de slachtoffers worden niet geholpen</strong>. Ze voelen zich schuldig, schamen zich, en veel geld wordt nooit teruggekregen. 
+                    Banken zeggen "jij bent verantwoordelijk", verzekeraars weigeren uit te keren, en de daders worden nooit gevonden.
+                </p>
+                <p class="text-lg text-gray-300 mb-6 leading-relaxed">
+                    <strong>Dit moet stoppen.</strong> SafeGuard is gemaakt omdat:
+                </p>
+                <ul class="space-y-4 text-gray-300">
+                    <li class="flex items-start gap-4">
+                        <span class="text-neon-cyan text-2xl">✓</span>
+                        <span><strong>Voorkomen beter dan genezen:</strong> Als we oplichting kunnen blokkeren voordat je geld kwijt raakt, moet dat gratis zijn voor iedereen.</span>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <span class="text-neon-cyan text-2xl">✓</span>
+                        <span><strong>Niemand mag alleen staan:</strong> Ouderen, jongeren en professionals worden allemaal gecloned. Iedereen verdient bescherming.</span>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <span class="text-neon-cyan text-2xl">✓</span>
+                        <span><strong>AI kan dit oplossen:</strong> Moderne technologie kan fraude in real-time detecteren. Dit mag niet achter betaalmuren zitten.</span>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <span class="text-neon-cyan text-2xl">✓</span>
+                        <span><strong>De overheid slaagt niet:</strong> Politie en OFAC kunnen niet alles tracken. We moeten zelf onze eerste verdedigingslinie zijn.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bg-gradient-to-r from-red-900/20 to-orange-900/20 border border-orange-700/30 p-8 rounded-xl">
+                <h3 class="text-xl font-bold mb-4 text-orange-400">
+                    🚨 De Feiten Over Online Oplichting
+                </h3>
+                <ul class="space-y-3 text-gray-300">
+                    <li>• <strong>Romance scams:</strong> €50-500 miljoen verlies per jaar in Europa. Slachtoffers voelen zich bedrogen en verlaten.</li>
+                    <li>• <strong>Beleggingsfraude:</strong> Nep-brokerages stelen miljarden. Slachtoffers zien hun geld nooit terug.</li>
+                    <li>• <strong>Phishing & sim-swap:</strong> Je bankrekening kan leeggehaald worden in 5 minuten.</li>
+                    <li>• <strong>Deepfakes & AI-stemmen:</strong> Je opa hoort je om geld vragen terwijl jij het niet bent.</li>
+                    <li>• <strong>Datalekken:</strong> Als jouw gegevens gelekt worden, kan iedereen je identiteit stelen.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- WIE WE ZIJN -->
+    <section id="wie" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900 border-t border-gray-800">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="section-title">Wie We Zijn</h2>
+            <p class="section-subtitle">Opgericht door een ethische hacker die zelf slachtoffer werd</p>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="bg-gradient-to-br from-cyan-900/30 to-blue-900/30 p-12 rounded-xl border border-cyan-500/30">
+                        <div class="text-7xl mb-4">👨‍💻</div>
+                        <h3 class="text-2xl font-bold mb-4 neon-cyan">Thomas van der Meer</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            <strong>Ethische Hacker & Beveiligingsonderzoeker</strong>
+                        </p>
+                        <p class="text-gray-300 leading-relaxed">
+                            Thomas werkt al 15 jaar in cybersecurity. Hij heeft voor overheidsinstanties en banken vulnerabilities gevonden en gemeld. 
+                            In 2022 werd <strong>hij zelf slachtoffer van phishing</strong> en verliest €8.000. Dat was het moment: 
+                            "Als dit mij kan gebeuren, met al mijn kennis, dan kan het iedereen gebeuren. En we moeten beter beschermd zijn."
+                        </p>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <div class="border-l-4 border-neon-cyan pl-6">
+                        <h4 class="font-bold text-neon-cyan mb-2">Onze Missie</h4>
+                        <p class="text-gray-300">
+                            Iedereen in Europa verdient gratis, real-time bescherming tegen online fraude. Geen geheimen, geen trukjes, geen verdienmodel gebaseerd op angst.
+                        </p>
+                    </div>
+                    <div class="border-l-4 border-neon-lime pl-6">
+                        <h4 class="font-bold text-neon-lime mb-2">Onze Aanpak</h4>
+                        <p class="text-gray-300">
+                            Open source, transparante AI, zero-knowledge architectuur. We verdienen geld niet door jouw gegevens. We bouwen wat we zelf willen gebruiken.
+                        </p>
+                    </div>
+                    <div class="border-l-4 border-neon-cyan pl-6">
+                        <h4 class="font-bold text-neon-cyan mb-2">Onze Belofte</h4>
+                        <p class="text-gray-300">
+                            Jij bent onze prioriteit. Niet marketing, niet upsell, niet dark patterns. Alleen bescherming. Punt.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DE APP -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-dark">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="section-title">Wat doet SafeGuard?</h2>
+            <p class="section-subtitle">Een sterke verdedigingslinie tegen fraude</p>
+
+            <div class="bg-gray-900 border border-gray-800 p-8 rounded-xl mb-12">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">🔒 Actieve Bescherming</h3>
+                        <ul class="space-y-3 text-gray-300">
+                            <li>✓ Real-time scanning van berichten en links</li>
+                            <li>✓ AI detecteert oplichting en fraude</li>
+                            <li>✓ Waarschuwt voordat jij je geld kwijtraakt</li>
+                            <li>✓ Integreert met WhatsApp, SMS, e-mail</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">💰 Waarom Gratis?</h3>
+                        <ul class="space-y-3 text-gray-300">
+                            <li>✓ Fraude voorkomen is ons doel, niet winst</li>
+                            <li>✓ Iedereen verdient bescherming</li>
+                            <li>✓ Ondersteund door ethische investeerders</li>
+                            <li>✓ Geen advertenties, geen data-selling</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FRAUDE BESCHERMINGSFUNCTIES (MAIN SECTION) -->
+    <section id="features" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-title">⚔️ Fraude Beschermingsfuncties</h2>
+            <p class="section-subtitle">Alle features zijn gratis en altijd ingeschakeld</p>
+
+            <div class="grid md:grid-cols-3 gap-6 mb-8">
+                <!-- CRITICAL FRAUD FEATURES -->
+                
+                <!-- 1. AI Scam Detector -->
+                <div class="feature-card fraud-critical fade-in">
+                    <div class="feature-icon">🤖</div>
+                    <h3 class="text-lg font-bold mb-3">AI Scam Detector</h3>
+                    <p class="text-gray-400 text-sm mb-4">
+                        Real-time AI detecteert oplichting in WhatsApp, SMS, e-mail en spraakberichten. Onmiddellijk waarschuwing bij verdacht bericht.
+                    </p>
+                    <div class="text-xs text-neon-red font-bold">⚠️ KRITIEK</div>
+                </div>
+
+                <!-- 2. Investerings- & Crypto Fraude -->
+                <div class="feature-card fraud-critical fade-in">
+                    <div class="feature-icon">💼</div>
+                    <h3 class="text-lg font-bold mb-3">Investerings- & Crypto Fraude</h3>
+                    <p class="text-gray-400 text-sm mb-4">
+                        Detecteert nep-beleggingsapps, valse crypto-platforms en MLM-schema's. Blokkeert links naar bekende frauduleuze brokerages.
+                    </p>
+                    <div class="text-xs text-neon-red font-bold">⚠️ KRITIEK</div>
+                </div>
+
+                <!-- 3. Romance Scam Shield -->
+                <div class="feature-card fraud-critical fade-in">
+                    <div class="feature-icon">💔</div>
+                    <h3 class="text-lg font-bold mb-3">Romance Scam Shield</h3>
+                    <p class="text-gray-400 text-sm mb-4">
+                        Herkent dating-apps met professionele oplichters. Waarschuwt wanneer het gesprek naar geld gaat.
+                    </p>
+                    <div class="text-xs text-neon-red font-bold">⚠️ KRITIEK</div>
+                </div>
+
+                <!-- 4. Real-time Anti-Phishing -->
+                <div class="feature-card fraud-critical fade-in">
+                    <div class="feature-icon">🎣</div>
+                    <h3 class="text-lg font-bold mb-3">Anti-Phishing & Nep-websites</h3>
+                    <p class="text-gray-400 text-sm mb-4">
+                        Identificeert spoofed wachtwoord-pagina's en namaak-websites van banken. Honderden miljoen scam-links gecontroleerd.
+                    </p>
+                    <div class="text-xs text-neon-red font-bold">⚠️ KRITIEK</div>
+                </div>
+
+                <!-- 5. Identity Theft & Data Breach Protection -->
+                <div class="feature-card fraud-critical fade-in">
+                    <div class="feature-icon">🆔</div>
+                    <h3 class="text-lg font-bold mb-3">Identity Theft Monitor</h3>
+                    <p class="text-gray-400 text-sm mb-4">
+                        Monitort of jouw e-mailadres in datalekken voorkomt. Onmiddellijke melding met advies om wachtwoorden te veranderen.
+                    </p>
+                    <div class="text-xs text-neon-red font-bold">⚠️ KRITIEK</div>
+                </div>
+
+                <!-- 6. Bank & Betaal Fraude Bescherming -->
+                <div class="feature-card fraud-critical fade-in">
+                    <div class="feature-icon">🏦</div>
+                    <h3 class="text-lg font-bold mb-3">Bank Fraude Bescherming</h3>
+                    <p class="text-gray-400 text-sm mb-4">
+                        Waarschuwt voor verdachte bankoverschrijvingen en onbekende betalingsverzoeken. Real-time controle.
+                    </p>
+                    <div class="text-xs text-neon-red font-bold">⚠️ KRITIEK</div>
+                </div>
+
+                <!-- 7. Deepfake & AI Voice Scam Detectie -->
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🎬</div>
+                    <h3 class="text-lg font-bold mb-3">Deepfake Detectie</h3>
+                    <p class="text-gray-400 text-sm mb-4">
+                        Detecteert syntetische stemmen en deepfake video's. Analyseert op onnatuurlijke bewegingen en signalen.
+                    </p>
+                </div>
+
+                <!-- 8. Fraud Risk Scanner -->
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="text-lg font-bold mb-3">Fraud Risk Scanner</h3>
+                    <p class="text-gray-400 text-sm mb-4">
+                        Geeft real-time risico-score (laag/medium/hoog) voor elk bericht. Gebaseerd op honderden fraude-indicatoren.
+                    </p>
+                </div>
+
+                <!-- 9. Unlimited Secure VPN -->
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🔐</div>
+                    <h3 class="text-lg font-bold mb-3">Unlimited Secure VPN</h3>
+                    <p class="text-gray-400 text-sm mb-4">
+                        Gratis VPN voor extra bescherming op publieke wifi. Verhindert man-in-the-middle aanvallen.
+                    </p>
+                </div>
+
+                <!-- 10. Wachtwoord Kluis -->
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🔑</div>
+                    <h3 class="text-lg font-bold mb-3">Wachtwoord Kluis</h3>
+                    <p class="text-gray-400 text-sm mb-4">
+                        Veilige opslag van wachtwoorden. Waarschuwt als je wachtwoord in een datalek is opgedoken.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-red-900/20 border border-red-700/50 p-8 rounded-xl mt-12">
+                <h3 class="text-lg font-bold mb-3 text-red-400">
+                    ⚠️ Let Op: De 6 Features met KRITIEK Label stoppen 95% van alle fraude
+                </h3>
+                <p class="text-gray-300">
+                    Als je beschermd bent tegen AI Scams, investerings-fraude, romance scams, phishing, datalekken en bankfraude, 
+                    ben je al veel veiliger dan 99% van de Nederlanders. Deze 6 functies zijn de essentiële verdedigingslinie.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOE HET WERKT -->
+    <section id="hoe" class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-dark">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="section-title">Hoe SafeGuard Werkt</h2>
+            <p class="section-subtitle">Drie eenvoudige stappen naar volledige bescherming</p>
+
+            <div class="space-y-12">
+                <div class="flex flex-col md:flex-row gap-8 items-start">
+                    <div class="flex-shrink-0">
+                        <div class="step-number">1</div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4 neon-cyan">Install & Setup (2 minuten)</h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            Download SafeGuard uit App Store of Google Play. Log in met je telefoonnummer of e-mailadres. 
+                            Geef toestemming voor berichten en links (we kijken ALLEEN naar risicovolle content, nooit je privéberichten).
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row gap-8 items-start">
+                    <div class="flex-shrink-0">
+                        <div class="step-number">2</div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4 neon-lime">Passieve Bescherming (Altijd Aan)</h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            SafeGuard scant elk bericht, elke link en elk verzoek dat binnenkomt. 
+                            De AI analyseert dit in real-time tegen miljoenen bekende fraude-patronen. 
+                            Je hoeft niks te doen – we werken op de achtergrond.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row gap-8 items-start">
+                    <div class="flex-shrink-0">
+                        <div class="step-number">3</div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4 text-neon-red">Waarschuwing & Blokkade (Onmiddellijk)</h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            Zodra fraude gedetecteerd wordt, krijg je een RODE WAARSCHUWING. 
+                            "Dit bericht lijkt phishing" of "Deze app is een bekende oplichting". 
+                            Je kunt er naartoe klikken voor meer info, maar je bent gewaarschuwd.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 bg-gray-900 border border-gray-800 p-8 rounded-xl">
+                <h3 class="text-xl font-bold mb-6">📊 Wat Gebeurt Met Jouw Gegevens?</h3>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="font-bold text-neon-cyan mb-4">🔒 Wat We NIET Doen</h4>
+                        <ul class="space-y-2 text-gray-300 text-sm">
+                            <li>❌ We slaan je privéberichten niet op</li>
+                            <li>❌ We verkopen je gegevens niet</li>
+                            <li>❌ We tracken je locatie niet</li>
+                            <li>❌ We tonen je advertenties</li>
+                            <li>❌ We bouwen profielen van jou</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-neon-lime mb-4">✅ Wat We WEL Doen</h4>
+                        <ul class="space-y-2 text-gray-300 text-sm">
+                            <li>✓ We analyseren fraude-signalen (niet de inhoud)</li>
+                            <li>✓ We versleutelen alles end-to-end</li>
+                            <li>✓ We behouden NULKENNIS van jouw data</li>
+                            <li>✓ We werken open source (iedereen kan het controleren)</li>
+                            <li>✓ Je kunt altijd verzoeken om wissen</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRIVACY & VEILIGHEID -->
+    <section id="privacy" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900 border-t border-gray-800">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="section-title">Privacy & Veiligheid</h2>
+            <p class="section-subtitle">Waar we absoluut niet compromis over sluiten</p>
+
+            <div class="space-y-6">
+                <div class="feature-card fade-in">
+                    <h3 class="text-lg font-bold mb-3 neon-cyan">🔐 Zero-Knowledge Architecture</h3>
+                    <p class="text-gray-300">
+                        Zelfs SafeGuard kan je berichten niet lezen. We analyseren alleen fraude-signalen (URL-structuur, woordkeuze, patroon-matching) 
+                        zonder ooit de daadwerkelijke inhoud te zien. Dit is cryptografisch mogelijk en permanent ingebouwd.
+                    </p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <h3 class="text-lg font-bold mb-3 neon-cyan">📝 Geen Logs, Geen Opslag</h3>
+                    <p class="text-gray-300">
+                        We slaan je berichten niet op onze servers op. Alles gebeurt op je telefoon. 
+                        Alleen geanonimiseerde fraude-signalen worden verzonden om onze AI model te verbeteren 
+                        (geen persoonlijke gegevens, geen herkenbare inhoud).
+                    </p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <h3 class="text-lg font-bold mb-3 neon-cyan">💰 Geen Data Selling</h3>
+                    <p class="text-gray-300">
+                        We hebben expliciet geweigerd groot kapitaal omdat investeerders wilden dat we jouw data zouden monetiseren. 
+                        Nee. We verdienen geld door partnerschappen met beveiligingsbedrijven, niet door jou te verkopen.
+                    </p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <h3 class="text-lg font-bold mb-3 neon-cyan">🔍 Volledig Open Source</h3>
+                    <p class="text-gray-300">
+                        Al onze code is openbaar beschikbaar. Beveiligingsonderzoekers kunnen het auditen. 
+                        Je hoeft ons niet te vertrouwen – je kunt het zelf controleren. Dit is transparantie.
+                    </p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <h3 class="text-lg font-bold mb-3 neon-cyan">⚖️ GDPR & AVG Compliant</h3>
+                    <p class="text-gray-300">
+                        Volledig in lijn met Nederlandse en Europese privacywet. Je kunt op elk moment al je gegevens verzoeken, aanpassen of laten wissen. 
+                        We hebben nul verhoeken ontvangen van overheden (en als we die zouden ontvangen, zouden we je waarschuwen).
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-dark">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="section-title">Verhalen Van Beschermde Mensen</h2>
+            <p class="section-subtitle">Echte mensen die SafeGuard redde van oplichting</p>
+
+            <div class="grid md:grid-cols-1 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card fade-in">
+                    <div class="flex items-start gap-4 mb-4">
+                        <div class="text-5xl">👩‍💼</div>
+                        <div>
+                            <h4 class="font-bold text-neon-cyan">Margaretha, 58 - Amsterdam</h4>
+                            <p class="text-gray-500 text-sm">Bijna €15.000 verloren aan valse beleggingsapp</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 leading-relaxed">
+                        "Ik kreeg bericht van 'mijn bank' (fake nummer) met link naar 'investerings-platform'. 
+                        SafeGuard gaf METEEN waarschuwing: PHISHING SCAM. Ik klikte niet. Later bleek dat dezelfde link 
+                        al 10.000+ Nederlanders had opgelicht van gemiddeld €15.000. 
+                        SafeGuard heeft me gered. Dit gaat om meer dan geld – het gaat om vertrouwen."
+                    </p>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card fade-in">
+                    <div class="flex items-start gap-4 mb-4">
+                        <div class="text-5xl">👨‍💻</div>
+                        <div>
+                            <h4 class="font-bold text-neon-cyan">Jaap, 34 - Rotterdam</h4>
+                            <p class="text-gray-500 text-sm">Bijna slachtoffer van romance scam</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 leading-relaxed">
+                        "Ik matched op dating-app met iemand. Na 2 weken vroegen ze geld voor 'nood-situatie'. 
+                        SafeGuard waarschuwde me: 'ROMANCE SCAM PATTERN DETECTED'. Ik googelde het vervolgens en ontdekte 
+                        dat mijn match 50 verschillende accounts had. Dit had me maanden verdriet kunnen kosten. 
+                        Gratis en werkende bescherming. Absolute aanrader."
+                    </p>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card fade-in">
+                    <div class="flex items-start gap-4 mb-4">
+                        <div class="text-5xl">👴</div>
+                        <div>
+                            <h4 class="font-bold text-neon-cyan">Piet, 71 - Leiden</h4>
+                            <p class="text-gray-500 text-sm">Ouder die niet goed met tech is</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 leading-relaxed">
+                        "Mijn dochter installeerde SafeGuard voor me. Ik snap niet alles van technologie, 
+                        maar SafeGuard is simpel. Rode waarschuwing = niet klikken. Dat snap ik. 
+                        Ze zegt dat criminelen mijn telefoonnummer hebben en me elk dag proberen op te lichten. 
+                        Ik voel me nu veilig. Mijn dochter ook. Dit is voor mensen zoals ik gemaakt."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DOWNLOAD SECTION -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900 border-t border-gray-800">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                <span class="gradient-cyan-lime">Begin je bescherming vandaag</span>
+            </h2>
+            <p class="text-xl text-gray-400 mb-12 leading-relaxed">
+                SafeGuard is 100% gratis. 0% spam. 0% tracking. Alleen bescherming.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
+                <button class="btn-primary text-lg w-full sm:w-auto px-8 py-4">
+                    📱 Download iOS
+                </button>
+                <button class="btn-primary text-lg w-full sm:w-auto px-8 py-4">
+                    🤖 Download Android
+                </button>
+                <button class="btn-primary text-lg w-full sm:w-auto px-8 py-4">
+                    💻 Web-versie
+                </button>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 text-sm text-gray-400 mb-12">
+                <div>
+                    <div class="text-2xl mb-2">✓</div>
+                    <div>Gedownload in 2 minuten</div>
+                </div>
+                <div>
+                    <div class="text-2xl mb-2">✓</div>
+                    <div>Setup in 1 minuut</div>
+                </div>
+                <div>
+                    <div class="text-2xl mb-2">✓</div>
+                    <div>Beschermd 24/7</div>
+                </div>
+            </div>
+
+            <div class="bg-cyan-900/20 border border-cyan-700/50 p-6 rounded-xl inline-block">
+                <p class="text-cyan-400 font-bold">
+                    💡 Tip: Download SafeGuard ook voor je ouders, vrienden en familie. Fraude raakt iedereen.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-950 border-t border-gray-800 py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-2xl">🛡️</span>
+                        <span class="text-lg font-bold neon-cyan">SafeGuard</span>
+                    </div>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        Gratis fraude bescherming voor iedereen in Nederland en Europa.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4 text-neon-cyan">Product</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="#features" class="hover:text-neon-cyan transition">Features</a></li>
+                        <li><a href="#hoe" class="hover:text-neon-cyan transition">Hoe Het Werkt</a></li>
+                        <li><a href="#privacy" class="hover:text-neon-cyan transition">Privacy</a></li>
+                        <li><a href="#" class="hover:text-neon-cyan transition">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4 text-neon-lime">Company</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="#wie" class="hover:text-neon-lime transition">Over Ons</a></li>
+                        <li><a href="#" class="hover:text-neon-lime transition">Open Source</a></li>
+                        <li><a href="#" class="hover:text-neon-lime transition">Careers</a></li>
+                        <li><a href="#" class="hover:text-neon-lime transition">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Legaal</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="#" class="hover:text-gray-200 transition">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-gray-200 transition">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-gray-200 transition">Disclaimer</a></li>
+                        <li><a href="#" class="hover:text-gray-200 transition">GDPR Verzoeken</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm">
+                    © 2025 SafeGuard. Alle rechten voorbehouden. Geen spam, geen tracking, geen oplichting.
+                </p>
+                <div class="flex gap-6 mt-6 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-neon-cyan transition">Twitter</a>
+                    <a href="#" class="text-gray-400 hover:text-neon-cyan transition">GitHub</a>
+                    <a href="#" class="text-gray-400 hover:text-neon-cyan transition">LinkedIn</a>
+                </div>
+            </div>
+
+            <div class="mt-8 p-4 bg-gray-900 rounded border border-gray-800 text-center text-gray-500 text-xs">
+                SafeGuard is een open-source initiatief van beveiligingsonderzoekers. 
+                Dit is geen commercial product. Ons doel is iedereen gratis bescherming bieden tegen fraude.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Add fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .testimonial-card, .stats-box').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Download button interaction
+        document.querySelectorAll('.btn-primary, .btn-secondary').forEach(button => {
+            button.addEventListener('click', function() {
+                if (this.textContent.includes('Download')) {
+                    alert('Download links zouden hier naar App Store, Google Play of web-versie gaan.\n\nDeze website is een landing page voorbeeld.');
+                }
+            });
+        });
+
+        // Console message
+        console.log('%cWelkom op SafeGuard! 🛡️', 'color: #00f0ff; font-size: 20px; font-weight: bold;');
+        console.log('%cDeze website is gebouwd met HTML, Tailwind CSS en ❤️', 'color: #39ff14; font-size: 14px;');
+    </script>
+
+</body>
+</html>
