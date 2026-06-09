@@ -93,57 +93,97 @@
     <div class="container">
       <h2>Hoe ziet de app eruit?</h2>
       <p class="screenshots-intro">Een blik op SafeGuard Senior's schone en intuïtieve interface.</p>
-      <div class="screenshots-grid">
-        <!-- Screenshot 1: Home Dashboard -->
-        <div class="screenshot-card">
-          <div class="screenshot-placeholder" style="background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);">
-            <div class="placeholder-text">🏠</div>
+      
+      <!-- Upload Manager -->
+      <div class="upload-manager">
+        <h3>📤 Screenshots Beheren</h3>
+        <div class="upload-grid">
+          <div class="upload-slot">
+            <input type="file" id="upload-01" accept="image/*" class="screenshot-upload" data-slot="01-dashboard" />
+            <label for="upload-01">
+              <div class="upload-placeholder">
+                <span class="upload-icon">+</span>
+                <span class="upload-text">Home Dashboard</span>
+              </div>
+            </label>
           </div>
-          <div class="screenshot-label">🏠 Home Dashboard</div>
-          <button class="lightbox-btn" onclick="alert('Screenshot uploaden naar assets/screenshots/01-dashboard.jpg')" aria-label="View fullscreen">+</button>
+          <div class="upload-slot">
+            <input type="file" id="upload-02" accept="image/*" class="screenshot-upload" data-slot="02-fraud-inbox" />
+            <label for="upload-02">
+              <div class="upload-placeholder">
+                <span class="upload-icon">+</span>
+                <span class="upload-text">Fraude Inbox</span>
+              </div>
+            </label>
+          </div>
+          <div class="upload-slot">
+            <input type="file" id="upload-03" accept="image/*" class="screenshot-upload" data-slot="03-source-status" />
+            <label for="upload-03">
+              <div class="upload-placeholder">
+                <span class="upload-icon">+</span>
+                <span class="upload-text">Bronnen Status</span>
+              </div>
+            </label>
+          </div>
+          <div class="upload-slot">
+            <input type="file" id="upload-04" accept="image/*" class="screenshot-upload" data-slot="04-settings" />
+            <label for="upload-04">
+              <div class="upload-placeholder">
+                <span class="upload-icon">+</span>
+                <span class="upload-text">Instellingen</span>
+              </div>
+            </label>
+          </div>
+          <div class="upload-slot">
+            <input type="file" id="upload-05" accept="image/*" class="screenshot-upload" data-slot="05-sms-protection" />
+            <label for="upload-05">
+              <div class="upload-placeholder">
+                <span class="upload-icon">+</span>
+                <span class="upload-text">SMS Bescherming</span>
+              </div>
+            </label>
+          </div>
+          <div class="upload-slot">
+            <input type="file" id="upload-06" accept="image/*" class="screenshot-upload" data-slot="06-ai-model" />
+            <label for="upload-06">
+              <div class="upload-placeholder">
+                <span class="upload-icon">+</span>
+                <span class="upload-text">AI Model Info</span>
+              </div>
+            </label>
+          </div>
         </div>
-        <!-- Screenshot 2: Fraud Inbox -->
-        <div class="screenshot-card">
-          <div class="screenshot-placeholder" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">
-            <div class="placeholder-text">🚨</div>
-          </div>
-          <div class="screenshot-label">🚨 Fraude Inbox</div>
-          <button class="lightbox-btn" onclick="alert('Screenshot uploaden naar assets/screenshots/02-fraud-inbox.jpg')" aria-label="View fullscreen">+</button>
-        </div>
-        <!-- Screenshot 3: Source Status -->
-        <div class="screenshot-card">
-          <div class="screenshot-placeholder" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
-            <div class="placeholder-text">🔄</div>
-          </div>
-          <div class="screenshot-label">🔄 Bronnen Status</div>
-          <button class="lightbox-btn" onclick="alert('Screenshot uploaden naar assets/screenshots/03-source-status.jpg')" aria-label="View fullscreen">+</button>
-        </div>
-        <!-- Screenshot 4: Settings Privacy -->
-        <div class="screenshot-card">
-          <div class="screenshot-placeholder" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
-            <div class="placeholder-text">⚙️</div>
-          </div>
-          <div class="screenshot-label">⚙️ Instellingen</div>
-          <button class="lightbox-btn" onclick="alert('Screenshot uploaden naar assets/screenshots/04-settings.jpg')" aria-label="View fullscreen">+</button>
-        </div>
-        <!-- Screenshot 5: SMS Protection -->
-        <div class="screenshot-card">
-          <div class="screenshot-placeholder" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">
-            <div class="placeholder-text">📨</div>
-          </div>
-          <div class="screenshot-label">📨 SMS Bescherming</div>
-          <button class="lightbox-btn" onclick="alert('Screenshot uploaden naar assets/screenshots/05-sms-protection.jpg')" aria-label="View fullscreen">+</button>
-        </div>
-        <!-- Screenshot 6: AI Model Info -->
-        <div class="screenshot-card">
-          <div class="screenshot-placeholder" style="background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);">
-            <div class="placeholder-text">🧠</div>
-          </div>
-          <div class="screenshot-label">🧠 AI Model Info</div>
-          <button class="lightbox-btn" onclick="alert('Screenshot uploaden naar assets/screenshots/06-ai-model.jpg')" aria-label="View fullscreen">+</button>
+        <div class="upload-info">
+          💡 <strong>Hoe werkt het:</strong>
+          <ol>
+            <li>Klik op een screenshot slot</li>
+            <li>Selecteer een afbeelding van je telefoon (JPG/PNG)</li>
+            <li>Preview verschijnt onmiddellijk</li>
+            <li>Klik "🔧 Edit Mode Uit" om screenshots op te slaan (als klaar)</li>
+          </ol>
         </div>
       </div>
-      <p class="screenshots-note">💡 <strong>Screenshots komen er aan!</strong> De echte app screenshots zullen hier verschijnen als ze zijn geüpload.</p>
+
+      <!-- Screenshots Display Grid -->
+      <div class="screenshots-grid" id="screenshotsGrid">
+        <!-- Generated dynamically by JavaScript -->
+      </div>
+
+      <!-- Lightbox Modal -->
+      <div id="lightbox" class="lightbox" hidden>
+        <div class="lightbox-content">
+          <button class="lightbox-close" aria-label="Close lightbox">✕</button>
+          <img id="lightbox-image" src="" alt="">
+        </div>
+      </div>
+
+      <!-- Mode Toggle Button -->
+      <div class="edit-mode-toggle">
+        <button id="editModeBtn" class="btn btn-secondary">🔧 Edit Mode</button>
+        <p class="edit-mode-status" id="editStatus" style="display:none; margin-top: 1rem; color: var(--secondary);">
+          ✏️ <strong>Edit Mode Aan</strong> - Klik op screenshots om te wijzigen
+        </p>
+      </div>
     </div>
   </section>
 
@@ -231,6 +271,7 @@
     </div>
   </footer>
 
+  <script src="assets/scripts/upload-manager.js"></script>
   <script src="assets/script.js"></script>
 </body>
 </html>
