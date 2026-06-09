@@ -17,6 +17,7 @@
       </button>
       <ul class="nav-menu" id="navMenu">
         <li><a href="#features" class="scroll-link">Features</a></li>
+        <li><a href="#screenshots" class="scroll-link">Screenshots</a></li>
         <li><a href="#beta" class="scroll-link">Join Beta</a></li>
         <li><a href="#about" class="scroll-link">Over mij</a></li>
         <li><a href="#sources" class="scroll-link">Bronnen</a></li>
@@ -87,6 +88,61 @@
     </div>
   </section>
 
+  <!-- Screenshots Section -->
+  <section id="screenshots" class="screenshots">
+    <div class="container">
+      <h2>Hoe ziet de app eruit?</h2>
+      <p class="screenshots-intro">Een blik op SafeGuard Senior's schone en intuïtieve interface.</p>
+      <div class="screenshots-grid">
+        <!-- Screenshot 1: Home Dashboard -->
+        <div class="screenshot-card">
+          <img src="assets/screenshots/01-dashboard.jpg" alt="SafeGuard Senior Home Dashboard met Odin-AI status" loading="lazy">
+          <div class="screenshot-label">🏠 Home Dashboard</div>
+          <button class="lightbox-btn" data-image="assets/screenshots/01-dashboard.jpg" data-alt="Home Dashboard" aria-label="Open fullscreen">+</button>
+        </div>
+        <!-- Screenshot 2: Fraud Inbox -->
+        <div class="screenshot-card">
+          <img src="assets/screenshots/02-fraud-inbox.jpg" alt="Fraud Inbox met gedetecteerde threats" loading="lazy">
+          <div class="screenshot-label">🚨 Fraude Inbox</div>
+          <button class="lightbox-btn" data-image="assets/screenshots/02-fraud-inbox.jpg" data-alt="Fraud Inbox" aria-label="Open fullscreen">+</button>
+        </div>
+        <!-- Screenshot 3: Source Status -->
+        <div class="screenshot-card">
+          <img src="assets/screenshots/03-source-status.jpg" alt="Bronnen status: CCB, Meldpunt, Safeonweb sync" loading="lazy">
+          <div class="screenshot-label">🔄 Bronnen Status</div>
+          <button class="lightbox-btn" data-image="assets/screenshots/03-source-status.jpg" data-alt="Source Status" aria-label="Open fullscreen">+</button>
+        </div>
+        <!-- Screenshot 4: Settings Privacy -->
+        <div class="screenshot-card">
+          <img src="assets/screenshots/04-settings.jpg" alt="Instellingen met privacy-opties" loading="lazy">
+          <div class="screenshot-label">⚙️ Instellingen</div>
+          <button class="lightbox-btn" data-image="assets/screenshots/04-settings.jpg" data-alt="Settings" aria-label="Open fullscreen">+</button>
+        </div>
+        <!-- Screenshot 5: SMS Protection -->
+        <div class="screenshot-card">
+          <img src="assets/screenshots/05-sms-protection.jpg" alt="SMS Protection actief" loading="lazy">
+          <div class="screenshot-label">📨 SMS Bescherming</div>
+          <button class="lightbox-btn" data-image="assets/screenshots/05-sms-protection.jpg" data-alt="SMS Protection" aria-label="Open fullscreen">+</button>
+        </div>
+        <!-- Screenshot 6: AI Model Info -->
+        <div class="screenshot-card">
+          <img src="assets/screenshots/06-ai-model.jpg" alt="Odin-AI model info en leercurve" loading="lazy">
+          <div class="screenshot-label">🧠 AI Model Info</div>
+          <button class="lightbox-btn" data-image="assets/screenshots/06-ai-model.jpg" data-alt="AI Model" aria-label="Open fullscreen">+</button>
+        </div>
+      </div>
+      <p class="screenshots-note">💡 <strong>Tip:</strong> Klik op een screenshot om deze in volledige grootte te bekijken.</p>
+    </div>
+  </section>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="lightbox" hidden>
+    <div class="lightbox-content">
+      <button class="lightbox-close" aria-label="Close lightbox">✕</button>
+      <img id="lightbox-image" src="" alt="">
+    </div>
+  </div>
+
   <!-- Beta Section -->
   <section id="beta" class="beta-section">
     <div class="container">
@@ -153,7 +209,7 @@
         </a>
         <a href="https://www.safeonweb.be/" target="_blank" class="source-card">
           <h3>🛡️ Centre for Cybersecurity Belgium</h3>
-          <p>CCB / Safeonweb — Cybersecu riteitsbewustzijn en fraudewaarschuwingen.</p>
+          <p>CCB / Safeonweb — Cybersecurity bewustzijn en fraudewaarschuwingen.</p>
         </a>
         <a href="mailto:suspicious@safeonweb.be" class="source-card">
           <h3>📧 Verdachte Meldingen</h3>
@@ -166,7 +222,7 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <p>&copy; 2026 SafeGuard Senior. Gebouwd met ❤️ voor Belgische cybersecu riteit.</p>
+      <p>&copy; 2026 SafeGuard Senior. Gebouwd met ❤️ voor Belgische cybersecurity.</p>
       <p><small>Privacy-first • On-device • Geen tracking • Open feedback</small></p>
     </div>
   </footer>

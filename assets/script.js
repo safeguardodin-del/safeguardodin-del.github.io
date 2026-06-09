@@ -45,6 +45,43 @@ document.querySelectorAll('.scroll-link').forEach(link => {
   });
 });
 
+// Lightbox Functionality
+const lightbox = document.getElementById('lightbox');
+const lightboxImage = document.getElementById('lightbox-image');
+const lightboxClose = document.querySelector('.lightbox-close');
+
+document.querySelectorAll('.lightbox-btn').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const imageSrc = btn.getAttribute('data-image');
+    const altText = btn.getAttribute('data-alt');
+    lightboxImage.src = imageSrc;
+    lightboxImage.alt = altText;
+    lightbox.removeAttribute('hidden');
+    document.body.style.overflow = 'hidden';
+  });
+});
+
+lightboxClose.addEventListener('click', () => {
+  lightbox.setAttribute('hidden', '');
+  document.body.style.overflow = 'auto';
+});
+
+lightbox.addEventListener('click', (e) => {
+  if (e.target === lightbox) {
+    lightbox.setAttribute('hidden', '');
+    document.body.style.overflow = 'auto';
+  }
+});
+
+// Close lightbox on Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && !lightbox.hasAttribute('hidden')) {
+    lightbox.setAttribute('hidden', '');
+    document.body.style.overflow = 'auto';
+  }
+});
+
 // Intersection Observer for animations
 const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
 const observer = new IntersectionObserver((entries) => {
@@ -56,7 +93,7 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, observerOptions);
 
-document.querySelectorAll('.feature-card, .source-card, .beta-card').forEach(el => {
+document.querySelectorAll('.feature-card, .source-card, .beta-card, .screenshot-card').forEach(el => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(20px)';
   el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';

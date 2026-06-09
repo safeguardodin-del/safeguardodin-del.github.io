@@ -282,6 +282,172 @@ body {
   line-height: 1.7;
 }
 
+/* Screenshots Section */
+.screenshots {
+  padding: 5rem 0;
+  background-color: var(--bg-light);
+}
+
+.screenshots h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.screenshots-intro {
+  text-align: center;
+  color: var(--text-muted);
+  margin-bottom: 3rem;
+  font-size: 1.1rem;
+}
+
+.screenshots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.screenshot-card {
+  position: relative;
+  background-color: var(--bg-alt);
+  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: all 0.3s;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow);
+}
+
+.screenshot-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  border-color: var(--primary);
+}
+
+.screenshot-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  background-color: #e0e7ff;
+  transition: opacity 0.3s;
+}
+
+.screenshot-card:hover img {
+  opacity: 0.8;
+}
+
+.screenshot-label {
+  padding: 1rem;
+  background-color: var(--bg-light);
+  border-top: 1px solid var(--border);
+  font-weight: 600;
+  color: var(--primary);
+  text-align: center;
+}
+
+.lightbox-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.3s;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.screenshot-card:hover .lightbox-btn {
+  opacity: 1;
+}
+
+.lightbox-btn:hover {
+  background-color: var(--primary-dark);
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.screenshots-note {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-top: 2rem;
+}
+
+/* Lightbox Modal */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.lightbox[open],
+.lightbox:not([hidden]) {
+  display: flex;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  background-color: #000;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.lightbox-content img {
+  display: block;
+  max-width: 100%;
+  max-height: 85vh;
+  width: auto;
+  height: auto;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  font-size: 1.8rem;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-close:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+  transform: scale(1.1);
+}
+
 /* Beta Section */
 .beta-section {
   padding: 5rem 0;
@@ -343,7 +509,7 @@ body {
 /* About Section */
 .about {
   padding: 5rem 0;
-  background-color: var(--bg-light);
+  background-color: var(--bg-alt);
 }
 
 .about h2 {
@@ -372,7 +538,7 @@ body {
 }
 
 .stat {
-  background-color: var(--bg-alt);
+  background-color: var(--bg-light);
   padding: 2rem;
   border-radius: 0.75rem;
   text-align: center;
@@ -396,7 +562,7 @@ body {
 /* Sources Section */
 .sources {
   padding: 5rem 0;
-  background-color: var(--bg-alt);
+  background-color: var(--bg-light);
 }
 
 .sources h2 {
@@ -419,7 +585,7 @@ body {
 }
 
 .source-card {
-  background-color: var(--bg-light);
+  background-color: var(--bg-alt);
   padding: 2rem;
   border-radius: 0.75rem;
   border: 1px solid var(--border);
@@ -481,7 +647,7 @@ body {
   }
 
   .nav-menu.active {
-    max-height: 300px;
+    max-height: 400px;
   }
 
   .nav-menu li {
@@ -507,9 +673,14 @@ body {
     grid-template-columns: 1fr;
   }
 
+  .screenshots-grid {
+    grid-template-columns: 1fr;
+  }
+
   .features h2,
   .about h2,
   .sources h2,
+  .screenshots h2,
   .beta-section h2 {
     font-size: 1.75rem;
   }
@@ -517,5 +688,10 @@ body {
   .btn {
     font-size: 0.9rem;
     padding: 0.6rem 1.2rem;
+  }
+
+  .lightbox-content {
+    max-width: 95vw;
+    max-height: 80vh;
   }
 }
